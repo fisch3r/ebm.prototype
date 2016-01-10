@@ -22,6 +22,9 @@ public class Beacon implements Serializable {
     @Column(nullable = false)
     private String type;
     
+    @Column(name = "reference_id", nullable = false)
+    private String referenceId;
+    
     @OneToOne(optional = false)
     @JoinColumn(name = "LOCATION_ID")
     private BeaconLocation location;
@@ -29,9 +32,10 @@ public class Beacon implements Serializable {
 	protected Beacon() {
 	}
 
-	public Beacon(String uuid, String type, BeaconLocation location) {
+	public Beacon(String uuid, String type, String referenceId, BeaconLocation location) {
 		this.uuid = uuid;
 		this.type = type;
+		this.referenceId = referenceId;
 		this.location = location;
 	}
 
@@ -65,6 +69,14 @@ public class Beacon implements Serializable {
 
 	public void setLocation(BeaconLocation location) {
 		this.location = location;
+	}
+
+	public String getReferenceId() {
+		return referenceId;
+	}
+
+	public void setReferenceId(String referenceId) {
+		this.referenceId = referenceId;
 	}
 
 }

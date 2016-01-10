@@ -59,6 +59,7 @@ public class BeaconService {
 		
 		beaconToUpdate.setType(beaconData.getType());
 		beaconToUpdate.setUuid(beaconData.getUuid());
+		beaconToUpdate.setReferenceId(beaconData.getReferenceId());
 		
 		if (beaconData.getLocation() != null) {
 			beaconToUpdate.getLocation().setStreet(beaconData.getLocation().getStreet());

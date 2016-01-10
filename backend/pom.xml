@@ -43,9 +43,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                	<jvmArguments>
-			        	-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005
-			        </jvmArguments>
                     <source>1.8</source>
                     <target>1.8</target>
                     <encoding>UTF-8</encoding>

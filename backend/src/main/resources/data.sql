@@ -7,6 +7,6 @@ insert into BEACON_LOCATION (street, house_number, zip_code, city, country, lat,
 insert into BEACON_LOCATION (street, house_number, zip_code, city, country, lat, lng) values ('Zeppelinstraße', '1', '69121', 'Heidelberg', 'DE', 49.4210728, 8.683729);
 
 -- some test beacons
-insert into BEACON (uuid, type, location_id) values ('2f6b2e74-b71a-11e5-9912-ba0be0483c18', 'iBeacon', 1);
-insert into BEACON (uuid, type, location_id) values ('2f6b320c-b71a-11e5-9912-ba0be0483c18', 'Eddystone', 2);
-insert into BEACON (uuid, type, location_id) values ('2f6b34c8-b71a-11e5-9912-ba0be0483c18', 'iBeacon', 3);
+insert into BEACON (uuid, type, reference_id, location_id) values ('2f6b2e74-b71a-11e5-9912-ba0be0483c18', 'iBeacon', 'referenz1', 1);
+insert into BEACON (uuid, type, reference_id, location_id) values ('2f6b320c-b71a-11e5-9912-ba0be0483c18', 'Eddystone', 'referenz2', 2);
+insert into BEACON (uuid, type, reference_id, location_id) values ('2f6b34c8-b71a-11e5-9912-ba0be0483c18', 'iBeacon', 'referenz3', 3);
