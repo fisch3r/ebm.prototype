@@ -26,7 +26,7 @@ public class Beacon implements Serializable {
     private String referenceId;
     
     @OneToOne(optional = false)
-    @JoinColumn(name = "LOCATION_ID")
+    @JoinColumn(name = "location_id")
     private BeaconLocation location;
 	
 	protected Beacon() {

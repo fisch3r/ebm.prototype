@@ -57,7 +57,7 @@ public class BeaconController {
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Beacon> addBeacon(@PathVariable("id") Long id, @RequestBody Beacon beaconData) {
+	public ResponseEntity<Beacon> updateBeacon(@PathVariable("id") Long id, @RequestBody Beacon beaconData) {
 		if (beaconData == null) {
 			return new ResponseEntity<Beacon>(HttpStatus.BAD_REQUEST);
 		}
