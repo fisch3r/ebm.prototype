@@ -12,7 +12,9 @@ import org.springframework.stereotype.Service;
 
 import com.exxeta.ebm.database.BeaconLocationRepository;
 import com.exxeta.ebm.database.BeaconRepository;
+import com.exxeta.ebm.database.CampaignRepository;
 import com.exxeta.ebm.database.entities.Beacon;
+import com.exxeta.ebm.database.entities.Campaign;
 import com.exxeta.ebm.database.entities.BeaconLocation;
 import com.exxeta.ebm.exceptions.BeaconNotFoundException;
 import com.exxeta.ebm.rest.converter.BeaconOverviewModelConverter;
@@ -26,6 +28,9 @@ public class BeaconService {
 	
 	@Autowired
 	private BeaconLocationRepository beaconLocationRepository;
+	
+	@Autowired
+	private CampaignRepository campaignRepository;
 	
 	@Autowired 
 	private BeaconOverviewModelConverter beaconOverviewConverter;
@@ -45,8 +50,12 @@ public class BeaconService {
 	
 	@Transactional
 	public Beacon addNewBeacon(Beacon beaconData) {
+		Campaign storedCampaign = campaignRepository.save(beaconData.getCampaign());
+		beaconData.setCampaign(storedCampaign);
+		
 		BeaconLocation storedLocation = beaconLocationRepository.save(beaconData.getLocation());
 		beaconData.setLocation(storedLocation);
+		
 		return beaconRepository.save(beaconData);
 	}
 	
@@ -69,6 +78,13 @@ public class BeaconService {
 			beaconToUpdate.getLocation().setCountry(beaconData.getLocation().getCountry());
 			beaconToUpdate.getLocation().setLat(beaconData.getLocation().getLat());
 			beaconToUpdate.getLocation().setLng(beaconData.getLocation().getLng());
+		}
+		
+		if (beaconData.getCampaign() != null) {
+			beaconToUpdate.getCampaign().setCustomer(beaconData.getCampaign().getCustomer());
+			beaconToUpdate.getCampaign().setCampaignName(beaconData.getCampaign().getCampaignName());
+			beaconToUpdate.getCampaign().setStartDate(beaconData.getCampaign().getStartDate());
+			beaconToUpdate.getCampaign().setEndDate(beaconData.getCampaign().getEndDate());
 		}
 		
 		return beaconRepository.save(beaconToUpdate);

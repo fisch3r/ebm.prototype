@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import com.exxeta.ebm.database.entities.Beacon;
+import com.exxeta.ebm.database.entities.Campaign;
 import com.exxeta.ebm.database.entities.BeaconLocation;
 import com.exxeta.ebm.rest.model.BeaconOverviewModel;
 
@@ -33,12 +34,18 @@ public class BeaconOverviewModelConverter {
 		if (beacon == null) {
 			return null;
 		}
+		
+		Campaign campaign = beacon.getCampaign();
+		String campaignInfo = String.format("%s, %s, %s, %s", campaign.getCustomer(), campaign.getCampaignName(), campaign.getStartDate(), campaign.getEndDate());
+		
+		
 		BeaconLocation location = beacon.getLocation();
 		String address = String.format("%s %s, %s", location.getZipCode(), location.getCity(), location.getCountry());
 		if (location.getLat() != null && location.getLng() != null) {
-			return new BeaconOverviewModel(String.valueOf(beacon.getId()), beacon.getUuid(), beacon.getType(), address, location.getLat(), location.getLng());
+			return new BeaconOverviewModel(String.valueOf(beacon.getId()), beacon.getUuid(), beacon.getType(), address, location.getLat(), location.getLng(), campaignInfo);
 		}
-		return new BeaconOverviewModel(String.valueOf(beacon.getId()), beacon.getUuid(), beacon.getType(), address);
+		
+		return new BeaconOverviewModel(String.valueOf(beacon.getId()), beacon.getUuid(), beacon.getType(), address, campaignInfo);
 	}
-
+	
 }

@@ -50,7 +50,7 @@ public class BeaconController {
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Beacon> addBeacon(@RequestBody Beacon beacon) {
-		if (beacon == null || beacon.getLocation() == null) {
+		if (beacon == null || beacon.getLocation() == null || beacon.getCampaign() == null) {
 			return new ResponseEntity<Beacon>(HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity<Beacon>(beaconService.addNewBeacon(beacon), HttpStatus.CREATED);

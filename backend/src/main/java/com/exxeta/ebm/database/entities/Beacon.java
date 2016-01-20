@@ -28,15 +28,28 @@ public class Beacon implements Serializable {
     @OneToOne(optional = false)
     @JoinColumn(name = "location_id")
     private BeaconLocation location;
+    
+    @OneToOne(optional = false)
+    @JoinColumn(name = "campaign_id")
+    private Campaign campaign;
 	
 	protected Beacon() {
 	}
 
-	public Beacon(String uuid, String type, String referenceId, BeaconLocation location) {
+	public Beacon(String uuid, String type, String referenceId, BeaconLocation location, Campaign campaign) {
 		this.uuid = uuid;
 		this.type = type;
 		this.referenceId = referenceId;
 		this.location = location;
+		this.campaign = campaign;
+	}
+
+	public Campaign getCampaign() {
+		return campaign;
+	}
+
+	public void setCampaign(Campaign campaign) {
+		this.campaign = campaign;
 	}
 
 	public Long getId() {
