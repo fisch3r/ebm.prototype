@@ -33,6 +33,7 @@ public class BeaconOverviewModelConverter {
 		if (beacon == null) {
 			return null;
 		}
+		
 		BeaconLocation location = beacon.getLocation();
 		String address = String.format("%s %s, %s", location.getZipCode(), location.getCity(), location.getCountry());
 		if (location.getLat() != null && location.getLng() != null) {

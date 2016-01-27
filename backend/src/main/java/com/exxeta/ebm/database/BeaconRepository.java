@@ -13,5 +13,5 @@ public interface BeaconRepository extends CrudRepository<Beacon, Long> {
 	Beacon findByUuid(String uuid);
 	
 	Page<Beacon> findByType(String type, Pageable pageable);
-
+	
 }

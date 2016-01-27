@@ -37,7 +37,7 @@ public class BeaconLocation implements Serializable {
     @Column(nullable = true)
     private Double lng;
 	
-	public BeaconLocation() {
+	protected BeaconLocation() {
 	}
 
 	public Long getId() {

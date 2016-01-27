@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.exxeta.ebm.database.BeaconLocationRepository;
 import com.exxeta.ebm.database.BeaconRepository;
+import com.exxeta.ebm.database.CampaignRepository;
 import com.exxeta.ebm.database.entities.Beacon;
 import com.exxeta.ebm.database.entities.BeaconLocation;
 import com.exxeta.ebm.exceptions.BeaconNotFoundException;
@@ -20,6 +21,9 @@ import com.exxeta.ebm.rest.model.BeaconOverviewModel;
 
 @Service
 public class BeaconService {
+	
+	@Autowired
+	private CampaignRepository campaignRepository;
 	
 	@Autowired
 	private BeaconRepository beaconRepository;
@@ -47,6 +51,7 @@ public class BeaconService {
 	public Beacon addNewBeacon(Beacon beaconData) {
 		BeaconLocation storedLocation = beaconLocationRepository.save(beaconData.getLocation());
 		beaconData.setLocation(storedLocation);
+		
 		return beaconRepository.save(beaconData);
 	}
 	

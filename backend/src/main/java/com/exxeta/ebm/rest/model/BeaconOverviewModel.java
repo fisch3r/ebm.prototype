@@ -8,6 +8,7 @@ public class BeaconOverviewModel {
 	private String address;
 	private Double lat;
 	private Double lng;
+	private String campaignInfo;
 	
 	public BeaconOverviewModel(String id, String uuid, String type, String address, Double lat, Double lng) {
 		this.id = id;
@@ -68,6 +69,14 @@ public class BeaconOverviewModel {
 
 	public void setLng(Double lng) {
 		this.lng = lng;
+	}
+
+	public String getCampaignInfo() {
+		return campaignInfo;
+	}
+
+	public void setCampaignInfo(String campaignInfo) {
+		this.campaignInfo = campaignInfo;
 	}
 	
 }

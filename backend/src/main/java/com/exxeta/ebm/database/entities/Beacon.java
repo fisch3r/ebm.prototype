@@ -1,13 +1,17 @@
 package com.exxeta.ebm.database.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Beacon implements Serializable {
@@ -28,7 +32,11 @@ public class Beacon implements Serializable {
     @OneToOne(optional = false)
     @JoinColumn(name = "LOCATION_ID")
     private BeaconLocation location;
-	
+    
+    @JsonIgnore
+    @OneToMany(mappedBy = "beacon")
+    private List<Campaign> campaigns;
+
 	protected Beacon() {
 	}
 
@@ -78,5 +86,14 @@ public class Beacon implements Serializable {
 	public void setReferenceId(String referenceId) {
 		this.referenceId = referenceId;
 	}
+
+	public List<Campaign> getCampaigns() {
+		return campaigns;
+	}
+
+	public void setCampaigns(List<Campaign> campaigns) {
+		this.campaigns = campaigns;
+	}
+
 
 }
